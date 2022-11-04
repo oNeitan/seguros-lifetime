@@ -26,7 +26,7 @@ namespace CadastroPessoas
             if (ctrl.mensagem.Equals(""))
             {
 
-                if (ctrl.loginOK)
+                if (ctrl.AcessoOk)
                 {
                     MessageBox.Show("Logado com sucesso!", "Entrando", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

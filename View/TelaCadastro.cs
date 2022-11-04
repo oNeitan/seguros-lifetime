@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,10 +22,18 @@ namespace CadastroPessoas
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            ComandosBanco cmdbd = new ComandosBanco();
-            cmdbd.cadastrar(txtbNome.Text, txtbCPF.Text, txtbEmail.Text, txtbTelefone.Text, txtbSenha.Text);
+            Controle ctrl = new Controle();
+            string mensagem = ctrl.cadastrar(txtbNome.Text, txtbCPF.Text, txtbEmail.Text, txtbTelefone.Text, txtbSenha.Text, txtbConfSenha.Text);
 
-            MessageBox.Show(cmdbd.mensagem);
+            if(ctrl.AcessoOk)
+            {
+                MessageBox.Show(mensagem, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(ctrl.mensagem);
+            }
+           
         }
     }
 }

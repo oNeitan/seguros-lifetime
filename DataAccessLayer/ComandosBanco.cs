@@ -10,8 +10,8 @@ namespace DataAccessLayer
 {
     public class ComandosBanco
     {
-        
-        bool logado = false;
+
+        public bool validacao = false;
         public string mensagem = "";
 
         SqlCommand cmd = new SqlCommand();
@@ -37,40 +37,60 @@ namespace DataAccessLayer
 
                 if (dataR.HasRows)
                 {
-                    logado = true;
+                    validacao = true;
                 }
+
+                cnx.desconectar();
+
+                dataR.Close();
             }
             catch(SqlException e)
             {
                 this.mensagem = "Erro ao se conectar com o banco\n" + e;
             }
 
-            return logado;
+
+            return validacao;
         }
 
-        public string cadastrar(string nome, string CPF, string email, string telefone, string senha)
+        public string cadastrar(string nome, string CPF, string email, string telefone, string senha, string confSenha)
         {
-            cmd.CommandText = comandoCadastro;
+            validacao = false;
 
-            cmd.Parameters.AddWithValue("@Nome", nome);
-            cmd.Parameters.AddWithValue("@CPF", CPF);
-            cmd.Parameters.AddWithValue("@Email", email);
-            cmd.Parameters.AddWithValue("@Telefone", telefone);
-            cmd.Parameters.AddWithValue("@Senha", senha);
 
-            try
+            if (senha.Equals(confSenha))
             {
-                cmd.Connection = cnx.conectar();
 
-                cmd.ExecuteNonQuery();
+                cmd.CommandText = comandoCadastro;
 
-                cnx.desconectar();
+                cmd.Parameters.AddWithValue("@Nome", nome);
+                cmd.Parameters.AddWithValue("@CPF", CPF);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Telefone", telefone);
+                cmd.Parameters.AddWithValue("@Senha", senha);
+       
 
-                this.mensagem = "Cadastrado com sucesso!";
+
+                try
+                {
+                    cmd.Connection = cnx.conectar();
+
+                    cmd.ExecuteNonQuery();
+
+                    cnx.desconectar();
+
+                    this.mensagem = "Cadastrado com sucesso!";
+
+                    validacao = true;
+                }
+                catch (SqlException er)
+                {
+                    this.mensagem = "Erro ao se conectar com o banco\n" + er;
+                }
             }
-            catch(SqlException er)
+            else
             {
-                this.mensagem = "Erro ao se conectar com o banco\n" + er;
+                this.mensagem = "As senhas digitadas não são iguais";
             }
 
             return mensagem;

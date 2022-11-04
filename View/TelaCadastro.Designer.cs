@@ -39,12 +39,14 @@
             this.txtbTelefone = new System.Windows.Forms.TextBox();
             this.txtbSenha = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtbConfSenha = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCadastrar
             // 
             this.btnCadastrar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCadastrar.Location = new System.Drawing.Point(305, 387);
+            this.btnCadastrar.Location = new System.Drawing.Point(329, 374);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(154, 43);
             this.btnCadastrar.TabIndex = 0;
@@ -82,7 +84,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(134, 245);
+            this.label4.Location = new System.Drawing.Point(278, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 15);
             this.label4.TabIndex = 4;
@@ -111,14 +113,14 @@
             // 
             // txtbTelefone
             // 
-            this.txtbTelefone.Location = new System.Drawing.Point(134, 263);
+            this.txtbTelefone.Location = new System.Drawing.Point(278, 142);
             this.txtbTelefone.Name = "txtbTelefone";
             this.txtbTelefone.Size = new System.Drawing.Size(122, 23);
             this.txtbTelefone.TabIndex = 8;
             // 
             // txtbSenha
             // 
-            this.txtbSenha.Location = new System.Drawing.Point(134, 327);
+            this.txtbSenha.Location = new System.Drawing.Point(134, 301);
             this.txtbSenha.Name = "txtbSenha";
             this.txtbSenha.PasswordChar = '*';
             this.txtbSenha.Size = new System.Drawing.Size(122, 23);
@@ -127,17 +129,36 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(134, 309);
+            this.label5.Location = new System.Drawing.Point(135, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 15);
             this.label5.TabIndex = 10;
             this.label5.Text = "Senha";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(278, 285);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 15);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Confirmar Senha";
+            // 
+            // txtbConfSenha
+            // 
+            this.txtbConfSenha.Location = new System.Drawing.Point(278, 303);
+            this.txtbConfSenha.Name = "txtbConfSenha";
+            this.txtbConfSenha.PasswordChar = '*';
+            this.txtbConfSenha.Size = new System.Drawing.Size(122, 23);
+            this.txtbConfSenha.TabIndex = 12;
+            // 
             // TelaCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 476);
+            this.ClientSize = new System.Drawing.Size(524, 455);
+            this.Controls.Add(this.txtbConfSenha);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtbSenha);
             this.Controls.Add(this.txtbTelefone);
@@ -169,5 +190,7 @@
         private TextBox txtbTelefone;
         private TextBox txtbSenha;
         private Label label5;
+        private Label label6;
+        private TextBox txtbConfSenha;
     }
 }
